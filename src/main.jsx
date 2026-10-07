@@ -2,7 +2,6 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { MotionConfig } from 'framer-motion'
-import { BagProvider } from './context/Bag.jsx'
 import Layout from './components/Layout.jsx'
 import Home from './pages/Home.jsx'
 import Shop from './pages/Shop.jsx'
@@ -14,8 +13,7 @@ import './styles.css'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <MotionConfig reducedMotion="user">
-      <BagProvider>
-        <BrowserRouter>
+      <BrowserRouter>
           <Routes>
             <Route element={<Layout />}>
               <Route index element={<Home />} />
@@ -26,7 +24,6 @@ createRoot(document.getElementById('root')).render(
             </Route>
           </Routes>
         </BrowserRouter>
-      </BagProvider>
     </MotionConfig>
   </StrictMode>
 )

@@ -5,24 +5,15 @@
    Save on GitHub → the site rebuilds itself in ~1 minute.
    ============================================================ */
 export const config = {
-  /* ---- How customers reach you ---- */
-  whatsappNumber: '',          // digits with country code, e.g. "15551234567"
-  instagram: 'chhotuandco',    // without the @
-  etsyUrl: '',                 // full link to your Etsy shop
-  amazonUrl: '',               // full link to your Amazon store
-  email: '',
+  /* ---- Pre-launch mode ----
+     While true, the site is a "coming soon" preview: no prices, no stock
+     counts, and every button says "Reserve on Instagram". */
+  comingSoon: true,
 
-  /* ---- Diwali & delivery ---- */
-  orderByDate: '',             // e.g. "October 30"
-  shipsFrom: '',               // e.g. "New Jersey"
-  localPickupCity: '',         // e.g. "Edison, NJ" — "" if no pickup
-  paymentNote: '',             // e.g. "a Zelle request"
-  exchangePolicy: '',          // e.g. "Free size exchanges within 14 days on unworn pieces with tags."
-
-  /* ---- About ---- */
-  founderName: '',
-  craftRegion: '',             // e.g. "Jaipur"
-  heirloomBoxPrice: '',        // e.g. "$44.99" — "" shows "Ask us"
+  instagram: 'chhotuandco',    // your Instagram handle, without the @
+  etsyUrl: '',                 // add later — the Etsy button appears automatically
+  amazonUrl: '',               // add later — the Amazon button appears automatically
+  email: '',                   // optional
 }
 
 /* ---- Size guide (confirm with your manufacturer's chart) ----
@@ -46,7 +37,7 @@ export const occasions = [
 /* ---- The collection ----
    Photos: put JPGs in public/img/products/ named <slug>-1.jpg … <slug>-4.jpg
    (portrait ~1200×1500, under 400 KB). -1 is the main photo.
-   stock = how many you have per size; 0 shows "fully reserved" + waitlist. */
+   price and stock are only shown once comingSoon is false. */
 export const products = [
   {
     slug: 'mehfil', name: 'Mehfil', gender: 'Girls', tier: 'Premium', price: 39.99, color: '#4A0E1A',

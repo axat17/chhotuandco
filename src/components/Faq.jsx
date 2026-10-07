@@ -1,18 +1,15 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { config } from '../config.js'
+import { handle } from '../lib.js'
 
 export default function Faq() {
   const items = [
-    ['How do I reserve?', 'Choose a piece and size, add it to your reservation bag, and send the bag to us in one message. We confirm the fit personally and hold your size. You can also check out on Etsy or Amazon.'],
-    ['How do I pay?', `No payment is taken on this website. Etsy and Amazon orders check out on those sites. For WhatsApp and Instagram reservations, we confirm your size and then send ${config.paymentNote || 'payment details'}.`],
-    ['Will it arrive before Diwali?', `${config.orderByDate ? `Reserve by ${config.orderByDate} and it` : 'Reserve early and it'} will arrive before 8 November. We ship${config.shipsFrom ? ' from ' + config.shipsFrom : ''} as soon as your size is confirmed.`],
-    ['Which size should I choose?', 'Go by weight rather than age — use the size finder. Between sizes, choose the larger.'],
+    ['When does the Diwali Edit arrive?', `Very soon. Follow ${handle || 'us on Instagram'} to see each piece first, and send us a message to reserve before the edit opens.`],
+    ['How do I reserve?', `Message us on Instagram${handle ? ` at ${handle}` : ''} with the piece you love and your baby’s weight. We’ll confirm the size personally and hold it for you.`],
+    ['Which size should I choose?', 'Go by weight rather than age — the size finder will tell you. Between sizes, choose the larger.'],
     ['Is the zari scratchy?', 'Never against the skin. Every embellished panel is lined in soft cotton.'],
-    config.exchangePolicy && ['What if it doesn’t fit?', config.exchangePolicy],
-    config.localPickupCity && ['Can I pick up locally?', `Yes, in ${config.localPickupCity}. Just mention it in your message.`],
-    ['How should I care for it?', 'Each piece comes with its own care card. Keep it in the box it arrived in, ready for the next little one in the family.'],
-  ].filter(Boolean)
+    ['Are there pieces for boys?', 'Yes — two of the four pieces in the edit are made for little gentlemen: Shaan and Chandni.'],
+  ]
   const [open, setOpen] = useState(0)
 
   return (

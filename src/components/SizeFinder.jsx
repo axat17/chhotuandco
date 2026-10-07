@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { recommendSize, waLink } from '../lib.js'
+import { igDM, recommendSize } from '../lib.js'
 
-/** Weight-based size recommendation. onPick(sizeId) is optional (used on product pages). */
-export default function SizeFinder({ onPick, compact = false, dark = false }) {
+/** Weight-based size recommendation. */
+export default function SizeFinder({ compact = false, dark = false }) {
   const [value, setValue] = useState('')
   const [unit, setUnit] = useState('lb')
   const r = value ? recommendSize(value, unit) : null
@@ -27,16 +27,15 @@ export default function SizeFinder({ onPick, compact = false, dark = false }) {
             <motion.div key={(r.size?.id || '') + r.tooSmall + r.tooBig + !!r.between}
               initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.35 }}>
               {r.tooSmall ? (
-                <p>For babies under 5 lb, <a href={waLink('Hello Chhotu & Co., my baby is very small — could you advise on sizing?')} target="_blank" rel="noopener">message us</a> and we’ll advise personally.</p>
+                <p>For babies under 5 lb, <a href={igDM} target="_blank" rel="noopener">message us on Instagram</a> and we’ll advise personally.</p>
               ) : (
                 <>
                   <p className="rec">We recommend <em>{r.size.long}</em></p>
                   <p className="why">
-                    {r.tooBig ? 'Our largest size; it fits up to about 27 lb. Message us if you’re unsure.'
-                      : r.between ? `Close to the top of this size — if you want it to last a few months, choose ${r.between.long}.`
+                    {r.tooBig ? 'Our largest size. Message us if you’re unsure.'
+                      : r.between ? `Close to the top of this size — for a longer fit, choose ${r.between.long}.`
                       : `Fits ${r.size.weight}, ${r.size.height}.`}
                   </p>
-                  {onPick && <button type="button" className="link-btn" onClick={() => onPick((r.between || r.size).id)}>Select {(r.between || r.size).label}</button>}
                 </>
               )}
             </motion.div>

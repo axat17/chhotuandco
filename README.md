@@ -2,7 +2,7 @@
 
 Indian couture for little ones, 0–18 months. A static site (plain HTML/CSS/JS) hosted free on GitHub Pages.
 
-**Live:** https://axat17.github.io/chhotuandco/
+**Live:** https://chhotuandco.com/
 
 ## Editing the site — one file
 
@@ -41,7 +41,7 @@ Keep each photo under ~400 KB (squoosh.app is free) so the site stays fast on ph
    - `A` records for `@` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
    - `CNAME` record for `www` → `axat17.github.io`
 4. Back in Settings → Pages, tick **Enforce HTTPS** once it's available.
-5. In `index.html` and `tools/product-template.html`, change the `og:image` URL to `https://chhotuandco.com/assets/img/og-image.png` (this is the preview image WhatsApp shows when you share the link), then run `python3 tools/build_products.py`.
+5. Run `python3 tools/set_domain.py` — it points the link-preview image (what WhatsApp shows when you share the link) at whatever domain is in `CNAME`.
 
 ## Adding a product
 
